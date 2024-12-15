@@ -15,6 +15,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -25,6 +27,75 @@
         contain-intrinsic-size: 3000px 1500px;
       }
     </style>
+    <script>
+      /*! elementor - v3.25.0 - 20-11-2024 */
+      "use strict";
+      (self.webpackChunkelementor = self.webpackChunkelementor || []).push([
+        [357],
+        {
+          1327: (e, t) => {
+            Object.defineProperty(t, "__esModule", { value: !0 }),
+              (t.default = void 0);
+            class TextEditor extends elementorModules.frontend.handlers.Base {
+              getDefaultSettings() {
+                return {
+                  selectors: { paragraph: "p:first" },
+                  classes: {
+                    dropCap: "elementor-drop-cap",
+                    dropCapLetter: "elementor-drop-cap-letter",
+                  },
+                };
+              }
+              getDefaultElements() {
+                const e = this.getSettings("selectors"),
+                  t = this.getSettings("classes"),
+                  r = jQuery("<span>", { class: t.dropCap }),
+                  p = jQuery("<span>", { class: t.dropCapLetter });
+                return (
+                  r.append(p),
+                  {
+                    $paragraph: this.$element.find(e.paragraph),
+                    $dropCap: r,
+                    $dropCapLetter: p,
+                  }
+                );
+              }
+              wrapDropCap() {
+                if (!this.getElementSettings("drop_cap"))
+                  return void (
+                    this.dropCapLetter &&
+                    (this.elements.$dropCap.remove(),
+                    this.elements.$paragraph.prepend(this.dropCapLetter),
+                    (this.dropCapLetter = ""))
+                  );
+                const e = this.elements.$paragraph;
+                if (!e.length) return;
+                const t = e.html().replace(/&nbsp;/g, " "),
+                  r = t.match(/^ *([^ ] ?)/);
+                if (!r) return;
+                const p = r[1],
+                  s = p.trim();
+                if ("<" === s) return;
+                (this.dropCapLetter = p), this.elements.$dropCapLetter.text(s);
+                const a = t
+                  .slice(p.length)
+                  .replace(/^ */, (e) =>
+                    new Array(e.length + 1).join("&nbsp;")
+                  );
+                e.html(a).prepend(this.elements.$dropCap);
+              }
+              onInit() {
+                super.onInit(...arguments), this.wrapDropCap();
+              }
+              onElementChange(e) {
+                "drop_cap" === e && this.wrapDropCap();
+              }
+            }
+            t.default = TextEditor;
+          },
+        },
+      ]);
+    </script>
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -1124,13 +1195,9 @@
                     <i
                       aria-hidden="true"
                       role="presentation"
-                      class="elementor-menu-toggle__icon--open eicon-menu-bar"
+                      class="fa fa-bars"
                     ></i>
-                    <i
-                      aria-hidden="true"
-                      role="presentation"
-                      class="elementor-menu-toggle__icon--close eicon-close"
-                    ></i>
+                   
                     <span class="elementor-screen-only">Menu</span>
                   </div>
                   <nav
@@ -1153,7 +1220,7 @@
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"
                       >
                         <a
-                          href="../about-us/index.html"
+                          href="#about"
                           class="elementor-item"
                           tabindex="-1"
                           >À propos</a
@@ -1163,76 +1230,24 @@
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-16"
                       >
                         <a
-                          href="../services/index.html"
+                          href="#service"
                           class="elementor-item"
                           tabindex="-1"
                           >Services</a
                         >
-                        <ul class="sub-menu elementor-nav-menu--dropdown">
-                          <li
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18"
-                          >
-                            <a
-                              href="../booking/index.html"
-                              class="elementor-sub-item"
-                              tabindex="-1"
-                              >Réservation</a
-                            >
-                          </li>
-                          <li
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19"
-                          >
-                            <a
-                              href="../pricing-plan/index.html"
-                              class="elementor-sub-item"
-                              tabindex="-1"
-                              >Tarifs</a
-                            >
-                          </li>
-                        </ul>
+                    
                       </li>
                       <li
                         class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26"
                       >
                         <a
-                          href="../contact-us/index.html"
+                          href="#contact"
                           class="elementor-item"
                           tabindex="-1"
                           >Contact</a
                         >
                       </li>
-                      <li
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-27"
-                      >
-                        <a
-                          href="#"
-                          class="elementor-item elementor-item-anchor"
-                          tabindex="-1"
-                          >Pages</a
-                        >
-                        <ul class="sub-menu elementor-nav-menu--dropdown">
-                          <li
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21"
-                          >
-                            <a
-                              href="../gallery/index.html"
-                              class="elementor-sub-item"
-                              tabindex="-1"
-                              >Galerie</a
-                            >
-                          </li>
-                          <li
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20"
-                          >
-                            <a
-                              href="../faq/index.html"
-                              class="elementor-sub-item"
-                              tabindex="-1"
-                              >FAQ</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
+                
                     </ul>
                   </nav>
                 </div>
@@ -2377,21 +2392,37 @@
                       <div
                         class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons"
                       >
-                      <p>Votre événement mérite d'être exceptionnel, et nous sommes là pour le rendre inoubliable ! <br> Imaginez une ambiance parfaitement orchestrée, des décorations qui émerveillent vos invités et des souvenirs qui resteront gravés dans les cœurs. <br> Ne laissez pas le hasard décider de la magie de votre journée. <br> Cliquez sur le bouton ci-dessous pour découvrir nos services personnalisés et commencer à planifier l'événement de vos rêves. Chaque moment compte, et avec notre expertise, vous pouvez être sûr que chaque détail sera pris en charge. <br> <br> <strong>Agissez maintenant</strong> et faites le premier pas vers une célébration qui dépassera toutes vos attentes !</p>
-                  <br>
+                        <p>
+                          Votre événement mérite d'être exceptionnel, et nous
+                          sommes là pour le rendre inoubliable ! <br />
+                          Imaginez une ambiance parfaitement orchestrée, des
+                          décorations qui émerveillent vos invités et des
+                          souvenirs qui resteront gravés dans les cœurs. <br />
+                          Ne laissez pas le hasard décider de la magie de votre
+                          journée. <br />
+                          Cliquez sur le bouton ci-dessous pour découvrir nos
+                          services personnalisés et commencer à planifier
+                          l'événement de vos rêves. Chaque moment compte, et
+                          avec notre expertise, vous pouvez être sûr que chaque
+                          détail sera pris en charge. <br />
+                          <br />
+                          <strong>Agissez maintenant</strong> et faites le
+                          premier pas vers une célébration qui dépassera toutes
+                          vos attentes !
+                        </p>
+                        <br />
                         <button
                           class="elementor-button elementor-size-md"
                           type="submit"
                         >
                           <span class="elementor-button-content-wrapper">
-                            <span class="elementor-button-icon">
-                           
-                            </span>
-                            <span class="elementor-button-text">Contactez nous sur whatsapp</span>
+                            <span class="elementor-button-icon"> </span>
+                            <span class="elementor-button-text"
+                              >Contactez nous sur whatsapp</span
+                            >
                           </span>
                         </button>
-
-                     </div>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -2466,25 +2497,37 @@
                           <ul class="elementor-icon-list-items">
                             <li class="elementor-icon-list-item">
                               <span class="elementor-icon-list-icon">
-                                  <i aria-hidden="true" class="fas fa-check-circle"></i>
+                                <i
+                                  aria-hidden="true"
+                                  class="fas fa-check-circle"
+                                ></i>
                               </span>
-                              <span class="elementor-icon-list-text">Fête en intérieur</span>
-                          </li>
-                          <li class="elementor-icon-list-item">
+                              <span class="elementor-icon-list-text"
+                                >Fête en intérieur</span
+                              >
+                            </li>
+                            <li class="elementor-icon-list-item">
                               <span class="elementor-icon-list-icon">
-                                  <i aria-hidden="true" class="fas fa-check-circle"></i>
+                                <i
+                                  aria-hidden="true"
+                                  class="fas fa-check-circle"
+                                ></i>
                               </span>
-                              <span class="elementor-icon-list-text">Décoration de mariage sur mesure</span>
-                          </li>
-                          <li class="elementor-icon-list-item">
+                              <span class="elementor-icon-list-text"
+                                >Décoration de mariage sur mesure</span
+                              >
+                            </li>
+                            <li class="elementor-icon-list-item">
                               <span class="elementor-icon-list-icon">
-                                  <i aria-hidden="true" class="fas fa-check-circle"></i>
+                                <i
+                                  aria-hidden="true"
+                                  class="fas fa-check-circle"
+                                ></i>
                               </span>
-                              <span class="elementor-icon-list-text">Ambiance festive en extérieur</span>
-                          </li>
-                        
-                        
-                    
+                              <span class="elementor-icon-list-text"
+                                >Ambiance festive en extérieur</span
+                              >
+                            </li>
                           </ul>
                         </div>
                       </div>
